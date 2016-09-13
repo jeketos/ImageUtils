@@ -19,7 +19,7 @@ public class ImageUtils {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.CAMERA})
     public static void takePhoto(Fragment fragment, int requestCode) {
-        startActivityForResult(fragment.getActivity(), requestCode, "take_photo");
+        startActivityForResult(fragment, requestCode, "take_photo");
     }
 
     @RequiresPermission(allOf = {
@@ -29,11 +29,10 @@ public class ImageUtils {
         startActivityForResult(activity, requestCode, "take_photo");
     }
 
-
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @RequiresPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
     public static void getImageFromGallery(Fragment fragment, int requestCode) {
-        startActivityForResult(fragment.getActivity(), requestCode, "gallery");
+        startActivityForResult(fragment, requestCode, "gallery");
 
     }
 
@@ -47,6 +46,12 @@ public class ImageUtils {
         Intent intent = new Intent(activity, ImageUtilsActivity.class);
         intent.putExtra("action", action);
         activity.startActivityForResult(intent, requestCode);
+    }
+
+    private static void startActivityForResult(Fragment fragment, int requestCode, String action) {
+        Intent intent = new Intent(fragment.getActivity(), ImageUtilsActivity.class);
+        intent.putExtra("action", action);
+        fragment.startActivityForResult(intent, requestCode);
     }
 
 }

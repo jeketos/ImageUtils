@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.Matrix;
+import android.graphics.drawable.ColorDrawable;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -39,6 +41,7 @@ public class ImageUtilsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         if(savedInstanceState != null){
             photoPath = savedInstanceState.getString(PHOTO_PATH);
         } else {
@@ -211,7 +214,6 @@ public class ImageUtilsActivity extends AppCompatActivity {
                     break;
             }
         }
-//        photoBitmap = getScaledBitmap(photoBitmap, 1024, 768);
         return photoBitmap;
     }
 
