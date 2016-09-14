@@ -19,7 +19,7 @@
  ```
  If your `targetSdkVersion` is `23` or higher dont forget about `Runtime Permissions`.
 
-4. In onActivityResult do next
+4. In `onActivityResult` do next
 
  ```java
    if(requestCode == YOUR_REQUEST_CODE && resultCode == Activity.RESULT_OK){
