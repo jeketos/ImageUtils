@@ -22,7 +22,7 @@
 4. In onActivityResult do next
 
  ```java
-   if(requestCode == {YOUR_REQUEST_CODE} && resultCode == Activity.RESULT_OK){
+   if(requestCode == YOUR_REQUEST_CODE && resultCode == Activity.RESULT_OK){
         imagePath = data.getExtras().getString(Constants.BUNDLE_KEY);
     }
  ```
