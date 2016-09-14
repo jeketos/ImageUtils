@@ -4,9 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.graphics.Matrix;
-import android.graphics.drawable.ColorDrawable;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -41,7 +39,8 @@ public class ImageUtilsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//        getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//        setTheme(R.style.Theme_Transparent);
         if(savedInstanceState != null){
             photoPath = savedInstanceState.getString(PHOTO_PATH);
         } else {
@@ -72,8 +71,9 @@ public class ImageUtilsActivity extends AppCompatActivity {
         }
         String path;
         if (requestCode == REQUEST_CAMERA){
-            path = getImageFile( Uri.fromFile(new File(photoPath)));
-            proceedResult(path);
+//            path = getImageFile( Uri.fromFile(new File(photoPath)));
+//            proceedResult(path);
+            proceedResult(photoPath);
         } else if (requestCode == REQUEST_GALLERY ){
             path = getImageFile(data.getData());
             proceedResult(path);
@@ -89,7 +89,7 @@ public class ImageUtilsActivity extends AppCompatActivity {
         finish();
     }
 
-    public void takePhoto() {
+    private void takePhoto() {
         File photoFile = createImageFile();
         photoPath = photoFile.getAbsolutePath();
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -98,7 +98,7 @@ public class ImageUtilsActivity extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, ""), REQUEST_CAMERA);
     }
 
-    public void getImageFromDevice() {
+    private void getImageFromDevice() {
         Intent intent = new Intent(
                 Intent.ACTION_PICK);
         intent.setType("image/*");
@@ -113,7 +113,7 @@ public class ImageUtilsActivity extends AppCompatActivity {
     }
 
     @NonNull
-    public File getTempDirectory() {
+    private File getTempDirectory() {
         File externalDir = getExternalFilesDir(null);
 
         if (externalDir == null) {
@@ -123,7 +123,7 @@ public class ImageUtilsActivity extends AppCompatActivity {
         return new File(externalDir, TMP_DIR);
     }
 
-    public String getPath(Uri uri) {
+    private String getPath(Uri uri) {
         if (uri == null) {
             return null;
         }
@@ -140,7 +140,7 @@ public class ImageUtilsActivity extends AppCompatActivity {
         return uri.getPath();
     }
 
-    public String getImageFile(Uri selectedImageUri) {
+    private String getImageFile(Uri selectedImageUri) {
         Bitmap bitmap = null;
         try {
             InputStream is = getContentResolver().openInputStream(selectedImageUri);
@@ -157,12 +157,13 @@ public class ImageUtilsActivity extends AppCompatActivity {
         }
         File destFile = createImageFile();
         String path = getPath(selectedImageUri);
-        if (path != null) {
-            bitmap = fixImageOrientation(path, bitmap);
-        }
+        //todo next feature
+//        if (path != null) {
+//            bitmap = fixImageOrientation(path, bitmap);
+//        }
         try {
             FileOutputStream fOut = new FileOutputStream(destFile);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 80, fOut);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fOut);
             fOut.close();
             return destFile.getPath();
         } catch (FileNotFoundException e) {
@@ -174,7 +175,7 @@ public class ImageUtilsActivity extends AppCompatActivity {
         }
     }
 
-    public File createImageFile() {
+    private File createImageFile() {
         String pictureFileName = generateFilename();
         File dstDirectory = getTempDirectory();
         //noinspection ResultOfMethodCallIgnored
@@ -183,41 +184,41 @@ public class ImageUtilsActivity extends AppCompatActivity {
         return file;
     }
 
-    public Bitmap fixImageOrientation(String photoPath, Bitmap b) {
+    private Bitmap fixImageOrientation(String photoPath,@NonNull Bitmap bitmap) {
         ExifInterface exifInterface = null;
-        Bitmap bitmap;
+//        Bitmap bitmap;
         try {
             Log.d("image__", "path to exif - " + photoPath);
             exifInterface = new ExifInterface(photoPath);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-        if (b == null) {
-            bitmap = BitmapFactory.decodeFile(photoPath, bmOptions);
-        } else {
-            bitmap = b;
-        }
-        Bitmap photoBitmap = bitmap;
+//        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+//        if (b == null) {
+//            bitmap = BitmapFactory.decodeFile(photoPath, bmOptions);
+//        } else {
+//            bitmap = b;
+//        }
+//        Bitmap photoBitmap = bitmap;
         if (exifInterface != null) {
             int orientation = exifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_UNDEFINED);
             Log.d("image__", "orientation - " + orientation);
             switch (orientation) {
                 case ExifInterface.ORIENTATION_ROTATE_90:
-                    photoBitmap = rotateImage(photoBitmap, 90);
+                    bitmap = rotateImage(bitmap, 90);
                     break;
                 case ExifInterface.ORIENTATION_ROTATE_180:
-                    photoBitmap = rotateImage(photoBitmap, 180);
+                    bitmap = rotateImage(bitmap, 180);
                     break;
                 case ExifInterface.ORIENTATION_ROTATE_270:
-                    photoBitmap = rotateImage(photoBitmap, 270);
+                    bitmap = rotateImage(bitmap, 270);
                     break;
             }
         }
-        return photoBitmap;
+        return bitmap;
     }
 
-    public Bitmap rotateImage(Bitmap bitmap, float angle) {
+    private Bitmap rotateImage(Bitmap bitmap, float angle) {
         if (bitmap == null) return null;
 
         Matrix matrix = new Matrix();
