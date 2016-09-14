@@ -2,7 +2,7 @@
 
 ## Usage:
 ###1)Add library to your project
-###2)In AndroidManifest.xml write in your application next:
+###2)In `AndroidManifest.xml` write in your application next:
 ```xml
     <activity android:name="com.idap.imageutils.ImageUtilsActivity"/>
 ```
@@ -21,7 +21,7 @@
         imagePath = data.getExtras().getString(Constants.BUNDLE_KEY);
    }
 ```
-###  Path to image: /storage/emulated/0/Android/data/{your_project}/files/tmp/
+###  Path to image: `/storage/emulated/0/Android/data/{your_project}/files/tmp/`
   
 ##Publish:
 ###1) ./gradew install
