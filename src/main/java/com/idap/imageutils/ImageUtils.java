@@ -14,6 +14,7 @@ import android.support.v4.app.Fragment;
  *
  */
 public class ImageUtils {
+    public static final String IMAGE_PATH_KEY = "image_path_key";
 
     @RequiresPermission(allOf = {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,

@@ -23,7 +23,7 @@
 
  ```java
    if(requestCode == YOUR_REQUEST_CODE && resultCode == Activity.RESULT_OK){
-        imagePath = data.getExtras().getString(Constants.BUNDLE_KEY);
+        imagePath = data.getExtras().getString(ImageUtils.IMAGE_PATH_KEY);
     }
  ```
  Path to image: `/storage/emulated/0/Android/data/{your_project}/files/tmp/`

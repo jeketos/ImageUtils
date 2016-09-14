@@ -84,7 +84,7 @@ public class ImageUtilsActivity extends AppCompatActivity {
 
     private void proceedResult(String path) {
         Intent intent = new Intent();
-        intent.putExtra(Constants.IMAGE_PATH_KEY, path);
+        intent.putExtra(ImageUtils.IMAGE_PATH_KEY, path);
         setResult(RESULT_OK,intent);
         finish();
     }
