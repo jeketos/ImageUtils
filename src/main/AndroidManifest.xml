@@ -3,7 +3,8 @@
 
     <application android:theme="@style/AppTheme">
 
-        <activity android:name=".ImageUtilsActivity"/>
+        <activity android:name=".ImageUtilsActivity"
+            android:theme="@style/Theme.Transparent"/>
     </application>
 
 </manifest>
