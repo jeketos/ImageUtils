@@ -24,8 +24,11 @@
  ```java
    if(requestCode == YOUR_REQUEST_CODE && resultCode == Activity.RESULT_OK){
         imagePath = data.getExtras().getString(ImageUtils.IMAGE_PATH_KEY);
+        //or
+        // imagePath = ImageUtils.getImagePath(data);
     }
  ```
+
  Path to image: `/storage/emulated/0/Android/data/{your_project}/files/tmp/`
 
 ##Publish:

@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresPermission;
 import android.support.v4.app.Fragment;
 
@@ -53,6 +54,13 @@ public class ImageUtils {
         Intent intent = new Intent(fragment.getActivity(), ImageUtilsActivity.class);
         intent.putExtra("action", action);
         fragment.startActivityForResult(intent, requestCode);
+    }
+
+    public static String getImagePath(@NonNull Intent data){
+        if (data.getExtras() == null){
+            return null;
+        }
+        return data.getExtras().getString(ImageUtils.IMAGE_PATH_KEY);
     }
 
 }
