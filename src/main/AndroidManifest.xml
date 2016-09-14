@@ -1,0 +1,9 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.idap.imageutils">
+
+    <application android:theme="@style/AppTheme">
+
+        <activity android:name=".ImageUtilsActivity"/>
+    </application>
+
+</manifest>
