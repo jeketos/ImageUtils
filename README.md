@@ -2,7 +2,7 @@
 
 ## Usage:
 ###1) Add library to your project
-###2) In `AndroidManifest.xml` write in your application next:
+###2) In `AndroidManifest.xml` write in your `<application>` next:
 ```xml
     <activity android:name="com.idap.imageutils.ImageUtilsActivity"/>
 ```
