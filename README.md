@@ -6,7 +6,7 @@
 ```xml
     <activity android:name="com.idap.imageutils.ImageUtilsActivity"/>
 ```
-    ###3)If you want take photo from camera:
+###3)If you want take photo from camera:
 ```java
     ImageUtils.takePhoto({activity or fragment}, {YOUR_REQUEST_CODE});
 ```
