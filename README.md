@@ -11,11 +11,11 @@
 3. If you want take photo from camera:
 
  ```java
-     ImageUtils.takePhoto({activity_or_fragment}, {YOUR_REQUEST_CODE});
+     ImageUtils.takePhoto(ACTIVITY_OR_FRAGMENT, YOUR_REQUEST_CODE);
  ```
  from device:
  ```java
-     ImageUtils.getImageFromGallery({activity_or_fragment}, {YOUR_REQUEST_CODE});
+     ImageUtils.getImageFromGallery(ACTIVITY_OR_FRAGMENT, YOUR_REQUEST_CODE);
  ```
  If your `targetSdkVersion` is `23` or higher dont forget about `Runtime Permissions`.
 
