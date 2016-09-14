@@ -5,5 +5,5 @@ package com.idap.imageutils;
  *
  */
 public class Constants {
-    public static final String BUNDLE_KEY = "image_path_key";
+    public static final String IMAGE_PATH_KEY = "image_path_key";
 }
