@@ -17,7 +17,7 @@
  ```java
      ImageUtils.getImageFromGallery({activity_or_fragment}, {YOUR_REQUEST_CODE});
  ```
- If your `targetSdkVersion 23` or higher dont forget about `Runtime Permissions`.
+ If your `targetSdkVersion` is `23` or higher dont forget about `Runtime Permissions`.
 
 4. In onActivityResult do next
 
@@ -27,7 +27,7 @@
    }
  ```
  Path to image: `/storage/emulated/0/Android/data/{your_project}/files/tmp/`
-  
+
 ##Publish:
 ###1) ./gradew install
 ###2) ./gradew bintrayUpload
