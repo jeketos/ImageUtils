@@ -6,7 +6,7 @@
 
  ```xml
      <activity android:name="com.idap.imageutils.ImageUtilsActivity"/>
- ```
+ _```_
  
 3. If you want take photo from camera:
 
@@ -31,6 +31,7 @@
 
  Path to image: `/storage/emulated/0/Android/data/{your_project}/files/tmp/`
 
-##Publish:
-###1) ./gradew install
-###2) ./gradew bintrayUpload
+## Publish:
+1. ./gradew assemble
+2. ./gradew install
+3. ./gradew bintrayUpload
