@@ -14,7 +14,7 @@
 ```java
     ImageUtils.getImageFromGallery({activity_or_fragment}, {YOUR_REQUEST_CODE});
 ```
-#### If your targetSdkVersion 23 or higher dont forget about Runtime Permissions.
+#### If your `targetSdkVersion 23` or higher dont forget about `Runtime Permissions`.
 ###4) in onActivityResult do next
 ```java
    if(requestCode == {YOUR_REQUEST_CODE} && resultCode == Activity.RESULT_OK){
