@@ -20,26 +20,26 @@ public class ImageUtils {
     @RequiresPermission(allOf = {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.CAMERA})
-    public static void заебашитьФотку(Fragment fragment, int requestCode) {
+    public static void takePhoto(Fragment fragment, int requestCode) {
         startActivityForResult(fragment, requestCode, "take_photo");
     }
 
     @RequiresPermission(allOf = {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.CAMERA})
-    public static void заебашитьФотку(Activity activity, int requestCode) {
+    public static void takePhoto(Activity activity, int requestCode) {
         startActivityForResult(activity, requestCode, "take_photo");
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @RequiresPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-    public static void отжатьКартинуВГалерее(Fragment fragment, int requestCode) {
+    public static void getImageFromGallery(Fragment fragment, int requestCode) {
         startActivityForResult(fragment, requestCode, "gallery");
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @RequiresPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-    public static void отжатьКартинуВГалерее(Activity activity, int requestCode) {
+    public static void getImageFromGallery(Activity activity, int requestCode) {
         startActivityForResult(activity, requestCode, "gallery");
     }
 
@@ -55,11 +55,10 @@ public class ImageUtils {
         fragment.startActivityForResult(intent, requestCode);
     }
 
-    public static String отжатьТропинкуКФотке(@NonNull Intent data){
+    public static String getImagePath(@NonNull Intent data){
         if (data.getExtras() == null){
             return null;
         }
         return data.getExtras().getString(ImageUtils.IMAGE_PATH_KEY);
     }
-
 }
